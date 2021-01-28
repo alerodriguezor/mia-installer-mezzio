@@ -1,0 +1,74 @@
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { CodaTableComponent } from '@mobileia/layout-coda/lib/components/coda-table/coda-table.component';
+import { CodaTableConfig, CodaFormConfig, CodaModalService } from '@mobileia/layout-coda';
+import { %%nameClass%%Service } from 'src/app/services/%%name%%.service';
+import { %%nameClass%% } from 'src/app/entities/%%name%%';
+import { %%name%%Columns } from './%%name%%.columns';
+import { %%name%%Fields } from './%%name%%.fields';
+import { Subject } from 'rxjs';
+
+@Component({
+  selector: 'app-%%name%%',
+  templateUrl: './%%name%%.component.html',
+  styleUrls: ['./%%name%%.component.scss']
+})
+export class %%nameClass%%Component implements OnInit {
+
+  @ViewChild('tableHtml') tableHtml: CodaTableComponent;
+
+  tableConfig = new CodaTableConfig();
+  formConfig = new CodaFormConfig();
+
+  constructor(
+    protected %%name%%Service: %%nameClass%%Service,
+    protected modalService: CodaModalService
+  ) { }
+
+  ngOnInit(): void {
+    this.loadTableConfig();
+    this.loadFormConfig();
+  }
+
+  onClickAdd() {
+    this.onClickEdit(new %%nameClass%%());
+  }
+
+  onClickEdit(item: %%nameClass%%) {
+    this.formConfig.item = item;
+    this.modalService.openForm({
+      title: 'New %%nameClass%%',
+      form: this.formConfig,
+      textSaveButton: 'Save',
+      textCancelButton: 'Cancel',
+      classModal: ['modal-full-width-mobile', 'modal-color-primary']
+    }, '400px');
+  }
+
+  loadTableConfig() {
+    this.tableConfig.columns = %%name%%Columns;
+
+    this.tableConfig.columns[3]['options'][1].subject = new Subject<any>();
+    this.tableConfig.columns[3]['options'][1].subject.subscribe(item => {
+      this.onClickEdit(item);
+    });
+
+    this.tableConfig.service = this.%%name%%Service;
+    this.tableConfig.onClickRow.subscribe(item => {
+      //this.selectedCustomer = item;
+      //this.detailCustomer.loadCustomer(item.id);
+    });
+  }
+
+  loadFormConfig() {
+    this.formConfig.service = this.%%name%%Service;
+    this.formConfig.fields = %%name%%Fields;
+    this.formConfig.item = new %%nameClass%%();
+    this.formConfig.onSelectPlace.subscribe(data => {
+      this.formConfig.item.latitude = data.place.geometry.location.lat();
+      this.formConfig.item.longitude = data.place.geometry.location.lng();
+    });
+    this.formConfig.onResponse.subscribe(data => {
+      this.tableHtml.loadItems();
+    });
+  }
+}

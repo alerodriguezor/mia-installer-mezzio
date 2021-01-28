@@ -1,0 +1,8 @@
+<div class="container">
+
+    <app-header-title [title]="'%%nameClass%%'" [text]="'Lorem ipsum dolor sit amet consectetur adispising'">
+        <button mat-flat-button class="button-primary" (click)="onClickAdd()"><mat-icon>control_point</mat-icon>ADD NEW</button>
+    </app-header-title>
+
+    <coda-table #tableHtml [tableConfig]="tableConfig"></coda-table>
+</div>

@@ -1,0 +1,58 @@
+import 'package:choofly/apis/api_client.dart';
+import 'package:choofly/domain/entities/service.entity.dart';
+import 'package:choofly/libraries/mobileia/entities/mia_pagination.entity.dart';
+import 'package:choofly/libraries/mobileia/mia_query_model.dart';
+
+class %%nameClass%%Repository { 
+
+  static final %%nameClass%%Repository _instance = new %%nameClass%%Repository._internal();
+  %%nameClass%%Repository._internal();
+  factory %%nameClass%%Repository() => _instance;
+
+  Future<MIAPagination<%%nameClass%%>> list(MIAQueryModel query) async {
+    final response = await APIClient().get%%nameClass%%Service().list(query.toRequest());
+    if(!response.isSuccessful){
+      return null;
+    }
+
+    MIAPagination object;
+    final body = response.body;
+    if(body["success"] == true){
+      var list = List<%%nameClass%%>();
+      for (var item in body["response"]["data"]) {
+        list.add(%%nameClass%%().fromMap(item));
+      }
+      object = MIAPagination<%%nameClass%%>().fromMap(body["response"], list);
+    }
+
+    return object;
+  }
+
+  Future<bool> save(%%nameClass%% entity) async {
+    final response = await APIClient().get%%nameClass%%Service().save(entity.toMap());
+    if(!response.isSuccessful){
+      return false;
+    }
+
+    final body = response.body;
+    if(body["success"] == true){
+      return true;
+    }
+
+    return false;
+  }
+
+  Future<bool> remove(%%nameClass%% entity) async {
+    final response = await APIClient().get%%nameClass%%Service().remove(entity.id);
+    if(!response.isSuccessful){
+      return false;
+    }
+
+    final body = response.body;
+    if(body["success"] == true){
+      return true;
+    }
+
+    return false;
+  }
+}

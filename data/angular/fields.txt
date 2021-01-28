@@ -1,0 +1,5 @@
+import { CodaFieldConfig } from '@mobileia/layout-coda';
+
+export const %%name%%Fields: CodaFieldConfig[] = [
+%%properties%%
+];

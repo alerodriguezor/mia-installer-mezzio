@@ -1,0 +1,17 @@
+import 'package:choofly/libraries/mobileia/mia_model.dart';
+
+class %%nameClass%% extends MIAModel {
+%%properties%%
+  @override
+  MIAModel fromMap(Map<String, dynamic> data) {
+%%from%%
+    return this;
+  }
+
+  @override
+  Map<String, dynamic> toMap() {
+    return {
+%%maps%%
+    };
+  }
+}

@@ -1,0 +1,23 @@
+import 'package:chopper/chopper.dart';
+
+part "%%name%%.api.chopper.dart";
+
+@ChopperApi()
+abstract class %%nameClass%%Api extends ChopperService {
+
+  // helper methods that help you instanciate your service
+  static %%nameClass%%Api create([ChopperClient client]) => _$%%nameClass%%Api(client);
+
+  @Post(path: '/%%name%%/list')
+  Future<Response> list(@Body() Map<String, dynamic> query);
+
+  @Post(path: '/%%name%%/save')
+  Future<Response> save(@Body() Map<String, dynamic> query);
+
+  @Post(path: '/%%name%%/remove')
+  Future<Response> remove(@Query() int id);
+
+  @Post(path: '/%%name%%/fetch')
+  Future<Response> fetchById(@Query() int id);
+
+}

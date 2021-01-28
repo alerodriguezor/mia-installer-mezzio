@@ -1,0 +1,50 @@
+// GENERATED CODE - DO NOT MODIFY BY HAND
+
+part of '%%name%%.api.dart';
+
+// **************************************************************************
+// ChopperGenerator
+// **************************************************************************
+
+// ignore_for_file: always_put_control_body_on_new_line, always_specify_types, prefer_const_declarations
+class _$%%nameClass%%Api extends %%nameClass%%Api {
+  _$%%nameClass%%Api([ChopperClient client]) {
+    if (client == null) return;
+    this.client = client;
+  }
+
+  @override
+  final definitionType = %%nameClass%%Api;
+
+  @override
+  Future<Response<dynamic>> list(Map<String, dynamic> query) {
+    final $url = '/%%name%%/list';
+    final $body = query;
+    final $request = Request('POST', $url, client.baseUrl, body: $body);
+    return client.send<dynamic, dynamic>($request);
+  }
+
+  @override
+  Future<Response<dynamic>> save(Map<String, dynamic> query) {
+    final $url = '/%%name%%/save';
+    final $body = query;
+    final $request = Request('POST', $url, client.baseUrl, body: $body);
+    return client.send<dynamic, dynamic>($request);
+  }
+
+  @override
+  Future<Response<dynamic>> remove(int id) {
+    final $url = '/%%name%%/remove';
+    final $params = <String, dynamic>{'id': id};
+    final $request = Request('POST', $url, client.baseUrl, parameters: $params);
+    return client.send<dynamic, dynamic>($request);
+  }
+
+  @override
+  Future<Response<dynamic>> fetchById(int id) {
+    final $url = '/%%name%%/fetch';
+    final $params = <String, dynamic>{'id': id};
+    final $request = Request('POST', $url, client.baseUrl, parameters: $params);
+    return client.send<dynamic, dynamic>($request);
+  }
+}

@@ -1,0 +1,25 @@
+<?php
+
+namespace App\Handler\%%nameClass%%;
+/**
+ * Description of ListHandler
+ *
+ * @author matiascamiletti
+ */
+class ListHandler extends \Mia\Auth\Request\MiaAuthRequestHandler
+{
+    /**
+     * 
+     * @param \Psr\Http\Message\ServerRequestInterface $request
+     * @return \Psr\Http\Message\ResponseInterface
+     */
+    public function handle(\Psr\Http\Message\ServerRequestInterface $request): \Psr\Http\Message\ResponseInterface 
+    {
+        // Configurar query
+        $configure = new \Mia\Database\Query\Configure($this, $request);
+        // Obtenemos información
+        $rows = \App\Repository\%%nameClass%%Repository::fetchByConfigure($configure);
+        // Devolvemos respuesta
+        return new \Mia\Core\Diactoros\MiaJsonResponse($rows->toArray());
+    }
+}

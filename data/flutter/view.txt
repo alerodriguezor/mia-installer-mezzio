@@ -1,0 +1,23 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_clean_architecture/flutter_clean_architecture.dart';
+import 'package:ayudaapp/libraries/mobileia/views/mia_view_state.dart';
+
+import '%%name%%.controller.dart';
+
+class %%nameClass%%Screen extends View {
+
+  @override
+  State<StatefulWidget> createState() => _%%nameClass%%State();
+
+}
+
+class _%%nameClass%%State extends MIAViewState<%%nameClass%%Screen, %%nameClass%%Controller> {
+
+  _%%nameClass%%State() : super(%%nameClass%%Controller());
+
+  @override
+  Widget get view {
+    return Column();
+  }
+
+}

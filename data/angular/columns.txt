@@ -1,0 +1,16 @@
+import { CodaColumnConfig } from '@mobileia/layout-coda';
+
+export const %%name%%Columns: CodaColumnConfig[] = [
+%%properties%%
+    {
+      key: 'actions',
+      type: 'actions-list',
+      title: 'Actions',
+      fields_url: ['id'],
+      options: [
+        { url: '/%%name%%/view/:id', title: 'Holes', icon: 'visibility' },
+        { title: 'Edit', icon: 'edit' },
+        { type: 'delete', title: 'Delete', icon: 'delete_outline' },
+      ]
+    },
+  ];

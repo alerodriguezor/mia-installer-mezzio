@@ -1,0 +1,37 @@
+<?php
+
+namespace App\Repository;
+
+use \Illuminate\Database\Capsule\Manager as DB;
+
+/**
+ * Description of %%nameClass%%Repository
+ *
+ * @author matiascamiletti
+ */
+class %%nameClass%%Repository 
+{
+    /**
+     * Obtiene los %%name%%
+     * @param \Mia\Database\Query\Configure $configure
+     * @return array
+     */
+    public static function fetchByConfigure(\Mia\Database\Query\Configure $configure)
+    {
+        $query = \App\Model\%%nameClass%%::select('%%name%%.*');
+        
+        if(!$configure->hasOrder()){
+            $query->orderByRaw('id DESC');
+        }
+        $search = $configure->getSearch();
+        if($search != ''){
+            //$values = $search . '|' . implode('|', explode(' ', $search));
+            //$query->whereRaw('(firstname REGEXP ? OR lastname REGEXP ? OR email REGEXP ?)', [$values, $values, $values]);
+        }
+        
+        // Procesar parametros
+        $configure->run($query);
+
+        return $query->paginate($configure->getLimit(), ['*'], 'page', $configure->getPage());
+    }
+}
