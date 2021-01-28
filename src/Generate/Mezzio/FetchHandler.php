@@ -8,7 +8,7 @@ class FetchHandler extends BaseHandler
      * Path del archivo a tener de base
      * @var string
      */
-    protected $filePath = './vendor/mobileia/mia-installer-expressive/data/mezzio/g_handler_fetch.txt';
+    protected $filePath = './vendor/mobileia/mia-installer-mezzio/data/mezzio/g_handler_fetch.txt';
     /**
      * Path de la carpeta donde se va a guardar
      * @var string

@@ -10,7 +10,7 @@ class Model extends BaseFile
      * Path del archivo a tener de base
      * @var string
      */
-    protected $filePath = './vendor/mobileia/mia-installer-expressive/data/mezzio/g_model.txt';
+    protected $filePath = './vendor/mobileia/mia-installer-mezzio/data/mezzio/g_model.txt';
     /**
      * Path de la carpeta donde se va a guardar
      * @var string
