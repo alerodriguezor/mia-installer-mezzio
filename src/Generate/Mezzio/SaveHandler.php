@@ -31,9 +31,11 @@ class SaveHandler extends BaseHandler
                 continue;
             }
             if(stripos($column->Type, 'int') !== false){
-                $properties .= '        $item->'.$column->Field.' = intval($this->getParam($request, \''.$column->Field.'\', \'\'));';
+                $properties .= '        $item->'.$column->Field.' = intval($this->getParam($request, \''.$column->Field.'\', \'\'));
+                ';
             }else{
-                $properties .= '        $item->'.$column->Field.' = $this->getParam($request, \''.$column->Field.'\', \'\');';
+                $properties .= '        $item->'.$column->Field.' = $this->getParam($request, \''.$column->Field.'\', \'\');
+                ';
             }
         }
         $this->file = str_replace('%%properties%%', $properties, $this->file);

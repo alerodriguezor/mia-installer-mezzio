@@ -24,11 +24,11 @@ class SaveHandler extends \Mia\Auth\Request\MiaAuthRequestHandler
         try {
             $item->save();
         } catch (\Exception $exc) {
-            return new \Mia\Core\Diactoros\\MiaJsonErrorResponse(-2, $exc->getMessage());
+            return new \Mia\Core\Diactoros\MiaJsonErrorResponse(-2, $exc->getMessage());
         }
 
         // Devolvemos respuesta
-        return new \Mia\Core\Diactoros\MiaJsonResponse(true);
+        return new \Mia\Core\Diactoros\MiaJsonResponse($item->toArray());
     }
     
     /**
