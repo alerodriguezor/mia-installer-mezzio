@@ -8,7 +8,7 @@ class RemoveHandler extends BaseHandler
      * Path del archivo a tener de base
      * @var string
      */
-    protected $filePath = './vendor/mobileia/mia-installer-mezzio/data/mezzio/g_handler_remove.txt';
+    protected $filePath = './vendor/agencycoda/mia-installer-mezzio/data/mezzio/g_handler_remove.txt';
     /**
      * Path de la carpeta donde se va a guardar
      * @var string
