@@ -41,7 +41,7 @@ class Model extends BaseFile
  *  type="'.$column->Type.'",
  *  description=""
  * )
- ';
+';
         }
         $this->file = str_replace('%%swagger%%', $swagger, $this->file);
         
