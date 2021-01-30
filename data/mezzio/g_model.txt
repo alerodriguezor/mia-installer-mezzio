@@ -4,6 +4,7 @@ namespace App\Model;
 
 /**
  * Description of Model
+%%properties%%
  *
  * @OA\Schema()
 %%swagger%%

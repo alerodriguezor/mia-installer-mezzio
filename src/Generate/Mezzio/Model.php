@@ -32,6 +32,7 @@ class Model extends BaseFile
         $columns = DB::select('DESCRIBE ' . $this->name);
         // Recorremos las columnas
         $swagger = '';
+        $properties = '';
         foreach($columns as $column){
             if($column->Field == 'id'){
                 continue;
@@ -42,8 +43,11 @@ class Model extends BaseFile
  *  description=""
  * )
 ';
+            $properties .= ' * @property mixed $'.$column->Field.' Description for variable
+';
         }
         $this->file = str_replace('%%swagger%%', $swagger, $this->file);
+        $this->file = str_replace('%%properties%%', $properties, $this->file);
         
         try {
             mkdir($this->savePath, 0777, true);
