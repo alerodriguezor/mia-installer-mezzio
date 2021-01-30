@@ -37,11 +37,11 @@ class Model extends BaseFile
                 continue;
             }
             $swagger .= ' * @OA\Property(
-                    *  property="'.$column->Field.'",
-                    *  type="'.$column->Type.'",
-                    *  description=""
-                    * )
-                    ';
+ *  property="'.$column->Field.'",
+ *  type="'.$column->Type.'",
+ *  description=""
+ * )
+ ';
         }
         $this->file = str_replace('%%swagger%%', $swagger, $this->file);
         
