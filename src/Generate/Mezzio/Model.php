@@ -3,7 +3,7 @@
 namespace Mia\Installer\Generate\Mezzio;
 
 use Mia\Installer\BaseFile;
-
+use \Illuminate\Database\Capsule\Manager as DB;
 class Model extends BaseFile
 {
     /**
@@ -27,6 +27,22 @@ class Model extends BaseFile
     {
         $this->file = str_replace('%%nameClass%%', $this->getCamelCase($this->name), $this->file);
         $this->file = str_replace('%%name%%', $this->name, $this->file);
+
+        // Obtener las columnas de la tabla
+        $columns = DB::select('DESCRIBE ' . $this->name);
+        // Recorremos las columnas
+        $swagger = '';
+        foreach($columns as $column){
+            if($column->Field == 'id'){
+                continue;
+            }
+            $swagger .= ' * @OA\Property(
+                    *  property="'.$column->Field.'",
+                    *  type="'.$column->Type.'",
+                    *  description=""
+                    * )';
+        }
+        $this->file = str_replace('%%swagger%%', $swagger, $this->file);
         
         try {
             mkdir($this->savePath, 0777, true);

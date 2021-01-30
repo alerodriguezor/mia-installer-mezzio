@@ -3,7 +3,10 @@
 namespace App\Model;
 
 /**
- * Description of Section
+ * Description of Model
+ *
+ * @OA\Schema()
+%%swagger%%
  *
  * @author matiascamiletti
  */
