@@ -34,15 +34,25 @@ class Model extends BaseFile
         $swagger = '';
         $properties = '';
         foreach($columns as $column){
-            if($column->Field == 'id'){
-                continue;
+            $typeSwagger = '';
+            if(stripos($column->Type, 'int') !== false){
+                $typeSwagger = 'integer';
+            }else if(stripos($column->Type, 'varchar') !== false||stripos($column->Type, 'text') !== false){
+                $typeSwagger = 'string';
+            }else if(stripos($column->Type, 'decimal') !== false||stripos($column->Type, 'float') !== false||stripos($column->Type, 'double') !== false){
+                $typeSwagger = 'number';
             }
+
             $swagger .= ' * @OA\Property(
  *  property="'.$column->Field.'",
- *  type="'.$column->Type.'",
+ *  type="'.$typeSwagger.'",
  *  description=""
  * )
 ';
+            if($column->Field == 'id'){
+                continue;
+            }
+
             $properties .= ' * @property mixed $'.$column->Field.' Description for variable
 ';
         }
