@@ -12,9 +12,9 @@ use \Illuminate\Database\Capsule\Manager as DB;
 class %%nameClass%%Repository 
 {
     /**
-     * Obtiene los %%name%%
+     * 
      * @param \Mia\Database\Query\Configure $configure
-     * @return array
+     * @return \Illuminate\Database\Eloquent\Model
      */
     public static function fetchByConfigure(\Mia\Database\Query\Configure $configure)
     {
