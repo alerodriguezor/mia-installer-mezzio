@@ -4,6 +4,26 @@ namespace App\Handler\%%nameClass%%;
 
 /**
  * Description of FetchHandler
+ * 
+ * @OA\Get(
+ *     path="/%%name%%/fetch/{id}",
+ *     summary="%%nameClass%% Fetch",
+ *     tags={"%%nameClass%%"},
+ *     @OA\Parameter(
+ *         name="id",
+ *         description="Id of Item",
+ *         required=true,
+ *         in="path"
+ *     ),
+ *     @OA\Response(
+ *          response=200,
+ *          description="successful operation",
+ *          @OA\JsonContent(ref="#/components/schemas/%%nameClass%%")
+ *     )
+ *     security={
+ *         {"bearerAuth": {}}
+ *     }
+ * )
  *
  * @author matiascamiletti
  */
