@@ -36,7 +36,7 @@ class Route extends \Mia\Installer\BaseFile
         }
 
         if($this->isAuth){
-            $addRoute .= '\Mia\Auth\Handler\AuthInternalHandler::class, ';
+            $addRoute .= '\Mia\Auth\Handler\AuthHandler::class, ';
         }
 
         if($this->isRole > -1){
