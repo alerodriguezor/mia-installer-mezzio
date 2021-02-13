@@ -19,7 +19,7 @@ namespace App\Handler\%%nameClass%%;
  *          response=200,
  *          description="successful operation",
  *          @OA\JsonContent(ref="#/components/schemas/%%nameClass%%")
- *     )
+ *     ),
  *     security={
  *         {"bearerAuth": {}}
  *     }
