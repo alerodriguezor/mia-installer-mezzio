@@ -14,7 +14,7 @@ class %%nameClass%%Repository
     /**
      * 
      * @param \Mia\Database\Query\Configure $configure
-     * @return \Illuminate\Database\Eloquent\Model
+     * @return \Illuminate\Pagination\Paginator
      */
     public static function fetchByConfigure(\Mia\Database\Query\Configure $configure)
     {
