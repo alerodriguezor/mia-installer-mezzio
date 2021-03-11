@@ -26,6 +26,6 @@ class FetchHandler extends BaseHandler
         file_put_contents($this->savePath . '/' . $this->getCamelCase($this->name) . '/FetchHandler.php', $this->file);
 
         // Agregamos route
-        $this->addRoute('fetch', "'id'", true);
+        $this->addRoute('fetch', '', true, '{id}', '\'GET\', \'OPTIONS\', \'HEAD\'');
     }
 }

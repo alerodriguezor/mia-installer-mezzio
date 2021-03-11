@@ -14,13 +14,17 @@ abstract class BaseHandler extends BaseFile
      */
     public $name = '';
 
-    public function addRoute($nameHandler, $withParams = '', $isAuth = false)
+    public function addRoute($nameHandler, $withParams = '', $isAuth = false, $extraPath = '', $methods = '')
     {
         $route = new Route();
         $route->name = $this->name;
         $route->nameHandler = $nameHandler;
         $route->paramsRequired = $withParams;
         $route->isAuth = $isAuth;
+        $route->extraPath = $extraPath;
+        if($methods != ''){
+            $route->methods = $methods;
+        }
         $route->run();
     }
 }

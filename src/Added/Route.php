@@ -26,10 +26,17 @@ class Route extends \Mia\Installer\BaseFile
     public $paramsRequired = '';
     public $isAuth = false;
     public $isRole = -1;
+    public $extraPath = '';
+    public $methods = '\'GET\', \'POST\', \'OPTIONS\', \'HEAD\'';
 
     public function run()
     {
-        $addRoute = '    $app->route(\'/'.$this->name.'/'. $this->nameHandler . '\', [';
+        $pathAfter = '';
+        if($this->extraPath != ''){
+            $pathAfter = '/' . $this->extraPath;
+        }
+
+        $addRoute = '    $app->route(\'/'.$this->name.'/'. $this->nameHandler . $pathAfter . '\', [';
 
         if($this->paramsRequired != ''){
             $addRoute .= 'new \Mia\Core\Request\MiaVerifyParamHandler(array('.$this->paramsRequired.')), ';
@@ -43,7 +50,7 @@ class Route extends \Mia\Installer\BaseFile
             $addRoute .= 'new Mobileia\Expressive\Auth\Middleware\MiaRoleAuthMiddleware([\Mobileia\Expressive\Auth\Model\MIAUser::ROLE_ADMIN]), ';
         }
 
-        $addRoute .= 'App\Handler\\'.$this->getCamelCase($this->name).'\\' . $this->getCamelCase($this->nameHandler) . 'Handler::class], [\'GET\', \'POST\', \'OPTIONS\', \'HEAD\'], \'' . $this->name .'.'. $this->nameHandler .'\');';
+        $addRoute .= 'App\Handler\\'.$this->getCamelCase($this->name).'\\' . $this->getCamelCase($this->nameHandler) . 'Handler::class], ['.$this->methods.'], \'' . $this->name .'.'. $this->nameHandler .'\');';
 
         $addRoute .= '
 };';

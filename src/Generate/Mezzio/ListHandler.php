@@ -26,6 +26,6 @@ class ListHandler extends BaseHandler
         file_put_contents($this->savePath . '/' . $this->getCamelCase($this->name) . '/ListHandler.php', $this->file);
 
         // Agregamos route
-        $this->addRoute('list', '', true);
+        $this->addRoute('list', '', true, '', '\'POST\', \'OPTIONS\', \'HEAD\'');
     }
 }

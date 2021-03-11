@@ -46,6 +46,6 @@ class SaveHandler extends BaseHandler
         file_put_contents($this->savePath . '/' . $this->getCamelCase($this->name) . '/SaveHandler.php', $this->file);
 
         // Agregamos route
-        $this->addRoute('save', '', true);
+        $this->addRoute('save', '', true, '', '\'POST\', \'OPTIONS\', \'HEAD\'');
     }
 }
