@@ -9,7 +9,7 @@ use \Illuminate\Database\Capsule\Manager as DB;
  *
  * @author matiascamiletti
  */
-class Entity extends \Mia\Installer\BaseFile
+class Service extends \Mia\Installer\BaseFile
 {
     /**
      * Path del archivo a tener de base
