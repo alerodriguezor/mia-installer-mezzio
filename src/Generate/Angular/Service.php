@@ -36,6 +36,6 @@ class Service extends \Mia\Installer\BaseFile
         try {
             mkdir($this->savePath . '/', 0777, true);
         } catch (\Exception $exc) { }
-        file_put_contents($this->savePath . $this->name . '.ts', $this->file);
+        file_put_contents($this->savePath . $this->name . '.service.ts', $this->file);
     }
 }
