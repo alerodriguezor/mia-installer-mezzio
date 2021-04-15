@@ -26,6 +26,6 @@ class RemoveHandler extends BaseHandler
         file_put_contents($this->savePath . '/' . $this->getCamelCase($this->name) . '/RemoveHandler.php', $this->file);
 
         // Agregamos route
-        $this->addRoute('remove', "", true, '{id}', '\'GET\', \'OPTIONS\', \'HEAD\'');
+        $this->addRoute('remove', "", true, '{id}', '\'GET\', \'DELETE\', \'OPTIONS\', \'HEAD\'');
     }
 }
