@@ -79,17 +79,17 @@ class Model extends BaseFile
 
         if($hasDeleted){
             $this->file = str_replace('%%deleted%%', '/**
-            * Configurar un filtro a todas las querys
-            * @return void
-            */
-           protected static function boot(): void
-           {
-               parent::boot();
-               
-               static::addGlobalScope(\'exclude\', function (\Illuminate\Database\Eloquent\Builder $builder) {
-                   $builder->where(\'%%name%%.deleted\', 0);
-               });
-           }', $this->file);
+    * Configurar un filtro a todas las querys
+    * @return void
+    */
+    protected static function boot(): void
+    {
+        parent::boot();
+        
+        static::addGlobalScope(\'exclude\', function (\Illuminate\Database\Eloquent\Builder $builder) {
+            $builder->where(\'%%name%%.deleted\', 0);
+        });
+    }', $this->file);
         }else {
             $this->file = str_replace('%%deleted%%', '', $this->file);
         }
