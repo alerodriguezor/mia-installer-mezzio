@@ -27,7 +27,7 @@ class SaveHandler extends BaseHandler
         // Recorremos las columnas
         $properties = '';
         foreach($columns as $column){
-            if($column->Field == 'id'){
+            if($column->Field == 'id'||$column->Field == 'created_at'||$column->Field == 'updated_at'||$column->Field == 'deleted'){
                 continue;
             }
             if(stripos($column->Type, 'int') !== false){

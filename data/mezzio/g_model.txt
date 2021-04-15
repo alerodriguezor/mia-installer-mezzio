@@ -21,7 +21,7 @@ class %%nameClass%% extends \Illuminate\Database\Eloquent\Model
      *
      * @var bool
      */
-    //public $timestamps = false;
+    %%has_timestamp%%
 
     /**
      * 
@@ -32,16 +32,5 @@ class %%nameClass%% extends \Illuminate\Database\Eloquent\Model
         return $this->belongsTo(Company::class, 'company_id');
     }*/
 
-    /**
-     * Configurar un filtro a todas las querys
-     * @return void
-     */
-    protected static function boot(): void
-    {
-        parent::boot();
-        
-        static::addGlobalScope('exclude', function (\Illuminate\Database\Eloquent\Builder $builder) {
-            $builder->where('deleted', 0);
-        });
-    }
+    %%deleted%%
 }
