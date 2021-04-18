@@ -119,14 +119,14 @@ class Model extends BaseFile
 
         foreach($columns as $column){
             $result .= '/**
-        * 
-        * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-        */
-        public function '.$column->REFERENCED_TABLE_NAME.'()
-        {
-            return $this->belongsTo('.$this->getCamelCase($column->REFERENCED_TABLE_NAME).'::class, \''.$column->COLUMN_NAME.'\');
-        }
-    ';
+    * 
+    * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+    */
+    public function '.$column->REFERENCED_TABLE_NAME.'()
+    {
+        return $this->belongsTo('.$this->getCamelCase($column->REFERENCED_TABLE_NAME).'::class, \''.$column->COLUMN_NAME.'\');
+    }
+';
         }
 
         return $result;
