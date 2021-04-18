@@ -103,7 +103,11 @@ class Migration extends BaseFile
         try {
             mkdir($this->savePath, 0777, true);
         } catch (\Exception $exc) { }
-        file_put_contents($this->savePath . $this->getCamelCase($this->name) . '.php', $this->file);
+
+        $now = new \DateTime();
+        $dateName = $now->format('Y_m_d') . '_' . $now->format('H') . $now->format('i') . $now->format('s');
+
+        file_put_contents($this->savePath . $dateName . '_' . $this->name . '.php', $this->file);
     }
 
     protected function processRelations()
