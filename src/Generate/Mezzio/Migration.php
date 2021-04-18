@@ -23,6 +23,11 @@ class Migration extends BaseFile
      * @var string
      */
     public $name = '';
+    /**
+     * Nombre del Schema de la base de datos
+     * @var string
+     */
+    public $schema = '';
 
     public function run()
     {
