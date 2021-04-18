@@ -18,36 +18,6 @@ class %%nameClass%% extends Migration
 
             %%properties%%
 
-
-            $table->timestamps();
-            $table->string('title');
-            $table->text('caption_short');
-            $table->text('caption');
-            $table->foreign('creator_id')->references('id')->on('mia_user');
-            $table->text('photo_header');
-            $table->text('photos');
-            $table->integer('visibility');
-            $table->dateTime('publish_date');
-            $table->integer('downloads');
-            $table->integer('visits');
-            $table->text('photo_header_mobile');
-            $table->text('photos_mobile');
-            $table->foreign('category_id')->references('category_id')->on('id');
-            $table->foreign('subcategory_id')->references('cagetory_id')->on('id');
-            $table->dateTime('start_event');
-            $table->dateTime('end_event');
-            $table->decimal('duration', $presision = 12, $scale = 2);
-            $table->text('addres');
-            $table->string('latitude');
-            $table->string('longitude');
-            $table->integer('type');
-            $table->integer('status');
-            $table->integer('is_featured');
-            $table->foreign('supplier_id')->references('id')->on('supplier');
-            $table->dateTime('created_at', $presision = 0);
-            $table->dateTime('updated_at', $presision = 0);
-            $table->integer('deleted');
-
             %%relations%%
 
             %%has_timestamp%%

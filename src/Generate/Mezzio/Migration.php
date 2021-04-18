@@ -57,28 +57,28 @@ class Migration extends BaseFile
 
             if(stripos($column->Type, 'int') !== false){
                 $properties .= '$table->integer(\''.$column->Field.'\');
-';
+    ';
             }else if(stripos($column->Type, 'bigint') !== false){
                 $properties .= '$table->bigInteger(\''.$column->Field.'\');
-';
+    ';
             }else if(stripos($column->Type, 'varchar') !== false){
                 $properties .= '$table->string(\''.$column->Field.'\');
-';
+    ';
             }else if(stripos($column->Type, 'text') !== false){
                 $properties .= '$table->text(\''.$column->Field.'\');
-';
+    ';
             }else if(stripos($column->Type, 'decimal') !== false){
                 $properties .= '$table->decimal(\''.$column->Field.'\', $presision = 12, $scale = 2);
-';
+    ';
             }else if(stripos($column->Type, 'float') !== false||stripos($column->Type, 'double') !== false){
                 $properties .= '$table->double(\''.$column->Field.'\');
-';
+    ';
             }else if(stripos($column->Type, 'datetime') !== false){
                 $properties .= '$table->dateTime(\''.$column->Field.'\');
-';
+    ';
             }else if(stripos($column->Type, 'date') !== false){
                 $properties .= '$table->date(\''.$column->Field.'\');
-';
+    ';
             }
 
             
