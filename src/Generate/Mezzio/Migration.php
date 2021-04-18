@@ -45,7 +45,7 @@ class Migration extends BaseFile
                 continue;
             }
 
-            if($column->Field == 'created_at'){
+            if($column->Field == 'created_at'||$column->Field == 'updated_at'){
                 $hasTimestamp = true;
                 continue;
             }
