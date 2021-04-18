@@ -13,11 +13,17 @@ class AbmHandler extends BaseFile
      * @var string
      */
     public $name = '';
+    /**
+     * Nombre del Schema de la base de datos
+     * @var string
+     */
+    public $schema = '';
 
     public function run()
     {
         $model = new Model();
         $model->name = $this->name;
+        $model->schema = $this->schema;
         $model->run();
 
         $model = new Repository();

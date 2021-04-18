@@ -22,6 +22,11 @@ class Model extends BaseFile
      * @var string
      */
     public $name = '';
+    /**
+     * Nombre del Schema de la base de datos
+     * @var string
+     */
+    public $schema = '';
 
     public function run()
     {
@@ -77,6 +82,10 @@ class Model extends BaseFile
             $this->file = str_replace('%%has_timestamp%%', 'public $timestamps = false;', $this->file);
         }
 
+        // Relations START
+        $this->file = str_replace('%%relations%%', $this->processRelations(), $this->file);
+        // Relations END
+
         if($hasDeleted){
             $this->file = str_replace('%%deleted%%', '/**
     * Configurar un filtro a todas las querys
@@ -101,5 +110,25 @@ class Model extends BaseFile
             mkdir($this->savePath, 0777, true);
         } catch (\Exception $exc) { }
         file_put_contents($this->savePath . $this->getCamelCase($this->name) . '.php', $this->file);
+    }
+
+    protected function processRelations()
+    {
+        $result = '';
+        $columns = DB::select("SELECT TABLE_NAME, COLUMN_NAME, CONSTRAINT_NAME, REFERENCED_TABLE_NAME, REFERENCED_COLUMN_NAME, REFERENCED_TABLE_SCHEMA FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE WHERE REFERENCED_TABLE_SCHEMA = '".$this->schema."' AND TABLE_NAME = '".$this->name."';");
+
+        foreach($columns as $column){
+            $result .= '    /**
+            * 
+            * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+            */
+           /*public function '.$column->REFERENCED_TABLE_NAME.'()
+           {
+               return $this->belongsTo('.$this->getCamelCase($column->REFERENCED_TABLE_NAME).'::class, \''.$column->COLUMN_NAME.'\');
+           }*/
+       ';
+        }
+
+        return $result;
     }
 }

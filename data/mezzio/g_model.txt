@@ -23,14 +23,7 @@ class %%nameClass%% extends \Illuminate\Database\Eloquent\Model
      */
     %%has_timestamp%%
 
-    /**
-     * 
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    /*public function company()
-    {
-        return $this->belongsTo(Company::class, 'company_id');
-    }*/
+    %%relations%%
 
     %%deleted%%
 }
