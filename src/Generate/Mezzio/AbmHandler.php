@@ -26,6 +26,10 @@ class AbmHandler extends BaseFile
         $model->schema = $this->schema;
         $model->run();
 
+        $model = new Migration();
+        $model->name = $this->name;
+        $model->run();
+
         $model = new Repository();
         $model->name = $this->name;
         $model->run();
