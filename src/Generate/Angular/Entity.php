@@ -39,9 +39,9 @@ class Entity extends \Mia\Installer\BaseFile
         $properties = '';
         foreach($columns as $column){
             if(stripos($column->Type, 'int') === false){
-                $properties .= "    ".$column->Field.": string;\n";
+                $properties .= "    ".$column->Field.": string = '';\n";
             }else{
-                $properties .= "    ".$column->Field.": number;\n";
+                $properties .= "    ".$column->Field.": number = 0;\n";
             }
         }
         $this->file = str_replace('%%properties%%', $properties, $this->file);
