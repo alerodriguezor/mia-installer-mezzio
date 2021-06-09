@@ -19,8 +19,12 @@
             "Mia\\Installer\\": "src/"
         }
     },
+    "bin": [
+        "bin/coda-install"
+    ],
     "scripts": {
-        "serve": "php -S 0.0.0.0:8080 -t example/"
+        "serve": "php -S 0.0.0.0:8080 -t example/",
+        "coda-install": "coda-install"
     },
     "repositories": [
         {

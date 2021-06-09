@@ -1,0 +1,26 @@
+#!/usr/bin/env php
+<?php 
+
+declare(strict_types=1);
+
+namespace Mia\Installer;
+
+// Setup/verify autoloading
+if (file_exists($a = __DIR__ . '/../../../autoload.php')) {
+    require $a;
+} elseif (file_exists($a = __DIR__ . '/../vendor/autoload.php')) {
+    require $a;
+} elseif (file_exists($a = __DIR__ . '/../autoload.php')) {
+    require $a;
+} else {
+    fwrite(STDERR, 'Cannot locate autoloader; please run "composer install"' . PHP_EOL);
+    exit(1);
+}
+
+$command = $argc > 1 ? $argv[1] : '';
+if($command == 'abm-mezzio'){
+    $cmd = new \Mia\Installer\Command\AbmMezzioCommand($argv[2], $argv[3]);
+    $cmd->run();
+}
+
+exit(0);
