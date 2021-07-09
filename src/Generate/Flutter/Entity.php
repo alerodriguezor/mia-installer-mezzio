@@ -41,7 +41,7 @@ class Entity extends \Mia\Installer\BaseFile
         $maps = '';
         foreach($columns as $column){
             if(stripos($column->Type, 'int') === false){
-                $properties .= "  String ".$this->getCamelCaseVar($column->Field).";\n";
+                $properties .= "  String ".$this->getCamelCaseVar($column->Field)." = '';\n";
             }else{
                 $properties .= "  int ".$this->getCamelCaseVar($column->Field)." = 0;\n";
             }
