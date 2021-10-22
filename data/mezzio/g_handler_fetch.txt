@@ -38,8 +38,17 @@ class FetchHandler extends \Mia\Auth\Request\MiaAuthRequestHandler
     {
         // Obtenemos ID si fue enviado
         $itemId = $this->getParam($request, 'id', '');
-        // Buscar si existe el tour en la DB
-        $item = \App\Model\%%nameClass%%::find($itemId);
+        // Verify has withs in query
+        $withs = $this->getParam($request, 'withs', '');
+        if($withs != ''){
+            // Convert to array
+            $with = explode(',', $withs);
+            // Search item in DB
+            $item = \App\Model\%%nameClass%%::with($with)->where('id', $itemId)->first();
+        } else {
+            // Buscar si existe el tour en la DB
+            $item = \App\Model\%%nameClass%%::find($itemId);
+        }
         // verificar si existe
         if($item === null){
             return \App\Factory\ErrorFactory::notExist();
