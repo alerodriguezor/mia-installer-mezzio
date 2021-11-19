@@ -60,8 +60,12 @@ class SaveHandler extends \Mia\Auth\Request\MiaAuthRequestHandler
      */
     protected function getForEdit(\Psr\Http\Message\ServerRequestInterface $request)
     {
-        // Obtenemos ID si fue enviado
+        // Get Item ID
         $itemId = $this->getParam($request, 'id', '');
+        // Verify exist param
+        if($itemId == ''){
+            return new \App\Model\%%nameClass%%();
+        }
         // Buscar si existe el item en la DB
         $item = \App\Model\%%nameClass%%::find($itemId);
         // verificar si existe
