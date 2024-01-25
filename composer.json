@@ -10,8 +10,8 @@
     }],
     "require": {
         "php": ">=7.3",
-        "agencycoda/mia-core-mezzio": "v2.x-dev",
-        "agencycoda/mia-eloquent-mezzio": "v2.x-dev",
+        "agencycoda/mia-core-mezzio": "dev-main",
+        "agencycoda/mia-eloquent-mezzio": "dev-main",
         "laminas/laminas-code": "^4.5"
     },
     "autoload": {
